@@ -1,0 +1,23 @@
+services:
+  cbl:
+    container_name: cbl_container
+    restart: unless-stopped
+    build:
+      context: ./mockbanks/cbl
+      dockerfile: Dockerfile
+    env_file:
+      - ./mockbanks/cbl/.env
+    ports:
+      - 8081:8001
+
+  #temp
+  mtb:
+    container_name: mtb_container
+    restart: unless-stopped
+    build:
+      context: ./mockbanks/mtb
+      dockerfile: Dockerfile
+    env_file:
+      - ./mockbanks/mtb/.env
+    ports:
+      - 8082:8002
