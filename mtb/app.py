@@ -239,13 +239,11 @@ def statementStructureDataGetRequest():
             post_data[field] = aes.decrypt(post_data[field])
     print(post_data)
     data_for_response = {
-        "statement": copy.deepcopy(
-            db.get(post_data.get("customerUniqueNo")).get("statement")
-        ),
+        "statement": copy.deepcopy(db.get("12345").get("statement")),
         "RRN": post_data.get("RRN"),
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
-        "customerUniqueNo": post_data.get("customerUniqueNo"),
+        "customerUniqueNo": "12345",
     }
     return_enc_keys = [
         "customerUniqueNo",
@@ -285,10 +283,18 @@ def enquiryRequest():
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
         "customerUniqueNo": post_data.get("customerUniqueNo"),
-        "data": [
-            {"key": "active", "value": "1"},
-        ],
     }
+    if post_data.get("enquiryType") == "1001":
+        data["CustomerConsentReceivedYN"] = "1"
+    elif post_data.get("enquiryType") == "1002":
+        data["data"] = [
+            {"key": "active", "value": "1"},
+        ]
+    elif post_data.get("enquiryType") == "1003":
+        data["data"] = [
+            {"key": "StatementData", "value": "1"},
+        ]
+
     return_enc_keys = [
         # "customerUniqueNo",
     ]
