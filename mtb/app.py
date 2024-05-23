@@ -206,6 +206,8 @@ def statementStructureDataRequest():
             post_data[field] = aes.decrypt(post_data[field])
     print(post_data)
     data = {
+        "responseCode": "200",
+        "responseDesc": "OK",
         "status": db.get(
             post_data.get("customerUniqueNo"),
             {"staus": []},
@@ -239,6 +241,8 @@ def statementStructureDataGetRequest():
             post_data[field] = aes.decrypt(post_data[field])
     print(post_data)
     data_for_response = {
+        "responseCode": "200",
+        "responseDesc": "OK",
         "statement": copy.deepcopy(db.get("12345").get("statement")),
         "RRN": post_data.get("RRN"),
         "originalRRN": post_data.get("originalRRN"),
@@ -279,6 +283,8 @@ def enquiryRequest():
             post_data[field] = aes.decrypt(post_data[field])
     print(post_data)
     data = {
+        "responseCode": "200",
+        "responseDesc": "OK",
         "RRN": post_data.get("RRN"),
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
