@@ -405,38 +405,38 @@ db = {
                 "statementClosingBalance": "20000000",
                 "titleList": "Trans Date and Time|Value Date|Transaction|Details|Ref/Cheque No|Withdrawal (Dr.)|Deposit (Cr.)|Balance|Tran Brch",
                 "transactionData": [
-                    "01-01-2024 11:00|01-01-2024|CASH DEPOSIT|| |500.00|500.00|Main Branch",
-                    "02-01-2024 09:30|02-01-2024|ATM WITHDRAWAL|12345|100.00| |400.00|Main Branch",
-                    "02-01-2024 14:00|02-01-2024|PURCHASE Walmart|67890|50.00| |350.00|Main Branch",
-                    "03-01-2024 12:45|03-01-2024|TRANSFER FROM John|11111| |200.00|550.00|Main Branch",
-                    "04-01-2024 10:15|04-01-2024|PURCHASE Amazon|22222|30.00| |520.00|Main Branch",
-                    "05-01-2024 16:00|05-01-2024|CASH DEPOSIT|| |300.00|820.00|Main Branch",
-                    "06-01-2024 08:30|06-01-2024|ATM WITHDRAWAL|33333|200.00| |620.00|Main Branch",
-                    "07-01-2024 17:45|07-01-2024|PURCHASE eBay|44444|70.00| |550.00|Main Branch",
-                    "08-01-2024 13:20|08-01-2024|TRANSFER FROM Alice|55555| |150.00|700.00|Main Branch",
-                    "09-01-2024 11:30|09-01-2024|CASH DEPOSIT|| |400.00|1100.00|Main Branch",
-                    "10-01-2024 10:00|10-01-2024|ATM WITHDRAWAL|66666|50.00| |1050.00|Main Branch",
-                    "11-01-2024 14:30|11-01-2024|PURCHASE Target|77777|80.00| |970.00|Main Branch",
-                    "12-01-2024 09:00|12-01-2024|TRANSFER FROM Bob|88888| |250.00|1220.00|Main Branch",
-                    "13-01-2024 15:30|13-01-2024|PURCHASE Best Buy|99999|150.00| |1070.00|Main Branch",
-                    "14-01-2024 11:15|14-01-2024|CASH DEPOSIT|| |500.00|1570.00|Main Branch",
-                    "15-01-2024 08:45|15-01-2024|ATM WITHDRAWAL|10101|100.00| |1470.00|Main Branch",
-                    "16-01-2024 13:20|16-01-2024|PURCHASE Apple|20202|200.00| |1270.00|Main Branch",
-                    "17-01-2024 16:40|17-01-2024|TRANSFER FROM Carol|30303| |300.00|1570.00|Main Branch",
-                    "18-01-2024 10:30|18-01-2024|PURCHASE Microsoft|40404|250.00| |1320.00|Main Branch",
-                    "19-01-2024 15:00|19-01-2024|CASH DEPOSIT|| |600.00|1920.00|Main Branch",
-                    "20-01-2024 09:45|20-01-2024|ATM WITHDRAWAL|50505|80.00| |1840.00|Main Branch",
-                    "21-01-2024 11:30|21-01-2024|PURCHASE Etsy|60606|40.00| |1800.00|Main Branch",
-                    "22-01-2024 13:15|22-01-2024|TRANSFER FROM Dave|70707| |200.00|2000.00|Main Branch",
-                    "23-01-2024 10:00|23-01-2024|PURCHASE Uber Eats|80808|30.00| |1970.00|Main Branch",
-                    "24-01-2024 14:20|24-01-2024|CASH DEPOSIT|| |400.00|2370.00|Main Branch",
-                    "25-01-2024 09:30|25-01-2024|ATM WITHDRAWAL|90909|120.00| |2250.00|Main Branch",
-                    "26-01-2024 11:45|26-01-2024|PURCHASE Starbucks|10110|10.00| |2240.00|Main Branch",
-                    "27-01-2024 12:00|27-01-2024|TRANSFER FROM Emma|20220| |250.00|2490.00|Main Branch",
-                    "28-01-2024 16:30|28-01-2024|PURCHASE Zara|30330|100.00| |2390.00|Main Branch",
-                    "29-01-2024 11:00|29-01-2024|CASH DEPOSIT|| |500.00|2890.00|Main Branch",
-                    "30-01-2024 15:00|30-01-2024|ATM WITHDRAWAL|40440|80.00| |2810.00|Main Branch",
-                    "31-01-2024 13:45|31-01-2024|PURCHASE Netflix|50550|20.00| |2790.00|Main Branch",
+                    "01-01-2024 11:00|01-01-2024|CASH DEPOSIT|| |500.00|500.00|Main Branch|",
+                    "02-01-2024 09:30|02-01-2024|ATM WITHDRAWAL|12345|100.00| |400.00|Main Branch|",
+                    "02-01-2024 14:00|02-01-2024|PURCHASE Walmart|67890|50.00| |350.00|Main Branch|",
+                    "03-01-2024 12:45|03-01-2024|TRANSFER FROM John|11111| |200.00|550.00|Main Branch|",
+                    "04-01-2024 10:15|04-01-2024|PURCHASE Amazon|22222|30.00| |520.00|Main Branch|",
+                    "05-01-2024 16:00|05-01-2024|CASH DEPOSIT|| |300.00|820.00|Main Branch|",
+                    "06-01-2024 08:30|06-01-2024|ATM WITHDRAWAL|33333|200.00| |620.00|Main Branch|",
+                    "07-01-2024 17:45|07-01-2024|PURCHASE eBay|44444|70.00| |550.00|Main Branch|",
+                    "08-01-2024 13:20|08-01-2024|TRANSFER FROM Alice|55555| |150.00|700.00|Main Branch|",
+                    "09-01-2024 11:30|09-01-2024|CASH DEPOSIT|| |400.00|1100.00|Main Branch|",
+                    "10-01-2024 10:00|10-01-2024|ATM WITHDRAWAL|66666|50.00| |1050.00|Main Branch|",
+                    "11-01-2024 14:30|11-01-2024|PURCHASE Target|77777|80.00| |970.00|Main Branch|",
+                    "12-01-2024 09:00|12-01-2024|TRANSFER FROM Bob|88888| |250.00|1220.00|Main Branch|",
+                    "13-01-2024 15:30|13-01-2024|PURCHASE Best Buy|99999|150.00| |1070.00|Main Branch|",
+                    "14-01-2024 11:15|14-01-2024|CASH DEPOSIT|| |500.00|1570.00|Main Branch|",
+                    "15-01-2024 08:45|15-01-2024|ATM WITHDRAWAL|10101|100.00| |1470.00|Main Branch|",
+                    "16-01-2024 13:20|16-01-2024|PURCHASE Apple|20202|200.00| |1270.00|Main Branch|",
+                    "17-01-2024 16:40|17-01-2024|TRANSFER FROM Carol|30303| |300.00|1570.00|Main Branch|",
+                    "18-01-2024 10:30|18-01-2024|PURCHASE Microsoft|40404|250.00| |1320.00|Main Branch|",
+                    "19-01-2024 15:00|19-01-2024|CASH DEPOSIT|| |600.00|1920.00|Main Branch|",
+                    "20-01-2024 09:45|20-01-2024|ATM WITHDRAWAL|50505|80.00| |1840.00|Main Branch|",
+                    "21-01-2024 11:30|21-01-2024|PURCHASE Etsy|60606|40.00| |1800.00|Main Branch|",
+                    "22-01-2024 13:15|22-01-2024|TRANSFER FROM Dave|70707| |200.00|2000.00|Main Branch|",
+                    "23-01-2024 10:00|23-01-2024|PURCHASE Uber Eats|80808|30.00| |1970.00|Main Branch|",
+                    "24-01-2024 14:20|24-01-2024|CASH DEPOSIT|| |400.00|2370.00|Main Branch|",
+                    "25-01-2024 09:30|25-01-2024|ATM WITHDRAWAL|90909|120.00| |2250.00|Main Branch|",
+                    "26-01-2024 11:45|26-01-2024|PURCHASE Starbucks|10110|10.00| |2240.00|Main Branch|",
+                    "27-01-2024 12:00|27-01-2024|TRANSFER FROM Emma|20220| |250.00|2490.00|Main Branch|",
+                    "28-01-2024 16:30|28-01-2024|PURCHASE Zara|30330|100.00| |2390.00|Main Branch|",
+                    "29-01-2024 11:00|29-01-2024|CASH DEPOSIT|| |500.00|2890.00|Main Branch|",
+                    "30-01-2024 15:00|30-01-2024|ATM WITHDRAWAL|40440|80.00| |2810.00|Main Branch|",
+                    "31-01-2024 13:45|31-01-2024|PURCHASE Netflix|50550|20.00| |2790.00|Main Branch|",
                 ],
             },
             "statementFooter": {
@@ -731,6 +731,16 @@ def index():
     return jsonify({"status": "OK"})
 
 
+DATA_FILE="data.json"
+
+if not os.path.exists(DATA_FILE):
+    with open(DATA_FILE, "w") as f:
+        f.write(json.dumps({}))
+
+with open(DATA_FILE, "r") as f:
+    CUSTOMER_UNIQUE_NO_BY_RRN = json.loads(f.read())
+
+
 @app.route("/api/statementStructureDataRequest", methods=["POST"])
 def statementStructureDataRequest():
     # Get post data
@@ -745,6 +755,10 @@ def statementStructureDataRequest():
         if field in field_list:
             post_data[field] = aes.decrypt(post_data[field])
     print(post_data)
+    CUSTOMER_UNIQUE_NO_BY_RRN[post_data["RRN"]] = post_data["customerUniqueNo"]
+    with open("data.json", "w") as f:
+        f.write(json.dumps(CUSTOMER_UNIQUE_NO_BY_RRN))
+
     data = {
         "responseCode": "200",
         "responseDesc": "OK",
@@ -780,16 +794,19 @@ def statementStructureDataGetRequest():
         if field in field_list:
             post_data[field] = aes.decrypt(post_data[field])
     print(post_data)
+
+    customer_unique_no = CUSTOMER_UNIQUE_NO_BY_RRN[post_data.get("originalRRN")]
+
     data_for_response = {
         "responseCode": "200",
         "responseDesc": "OK",
         "statement": copy.deepcopy(
-            db.get(post_data.get("customerUniqueNo")).get("statement")
+            db.get(customer_unique_no).get("statement")
         ),
         "RRN": post_data.get("RRN"),
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
-        "customerUniqueNo": post_data.get("customerUniqueNo"),
+        "customerUniqueNo": customer_unique_no,
     }
     return_enc_keys = [
         "customerUniqueNo",
