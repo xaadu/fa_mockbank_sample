@@ -3,19 +3,18 @@ services:
     container_name: cbl_container
     restart: unless-stopped
     build:
-      context: ./cbl
+      context: .
       dockerfile: Dockerfile
     env_file:
       - ./cbl/.env
     ports:
       - 8081:8001
 
-  #temp
   mtb:
     container_name: mtb_container
     restart: unless-stopped
     build:
-      context: ./mtb
+      context: .
       dockerfile: Dockerfile
     env_file:
       - ./mtb/.env

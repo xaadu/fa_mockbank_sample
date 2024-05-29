@@ -731,7 +731,7 @@ def index():
     return jsonify({"status": "OK"})
 
 
-DATA_FILE="data.json"
+DATA_FILE = "data.json"
 
 if not os.path.exists(DATA_FILE):
     with open(DATA_FILE, "w") as f:
@@ -800,9 +800,7 @@ def statementStructureDataGetRequest():
     data_for_response = {
         "responseCode": "200",
         "responseDesc": "OK",
-        "statement": copy.deepcopy(
-            db.get(customer_unique_no).get("statement")
-        ),
+        "statement": copy.deepcopy(db.get(customer_unique_no).get("statement")),
         "RRN": post_data.get("RRN"),
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
@@ -874,5 +872,5 @@ if __name__ == "__main__":
     app.run(
         debug=True,
         host="0.0.0.0",
-        port=8002,
+        port=int(os.environ.get("PORT", 8001)),
     )
