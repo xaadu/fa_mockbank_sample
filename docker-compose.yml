@@ -11,6 +11,7 @@ services:
       - 8081:8001
     volumes:
       - ./app.py:/app/app.py
+      - ./data.json:/app/data.json
 
   mtb:
     container_name: mtb_container
@@ -24,3 +25,4 @@ services:
       - 8082:8002
     volumes:
       - ./app.py:/app/app.py
+      - ./data.json:/app/data.json
