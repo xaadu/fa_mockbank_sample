@@ -396,7 +396,7 @@ db = {
                 "data": [
                     {"key": "InterestOrProfit", "value": "2.00%"},
                     {"key": "MICR", "value": "142783736"},
-                    {"key": "accountStatus ", "value": "OPERATIVE"},
+                    {"key": "accountStatus", "value": "OPERATIVE"},
                     {"key": "accountType", "value": "MTB SAMPLE ACCOUNT"},
                 ],
             },
