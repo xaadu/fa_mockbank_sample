@@ -795,7 +795,10 @@ def statementStructureDataGetRequest():
             post_data[field] = aes.decrypt(post_data[field])
     print(post_data)
 
-    customer_unique_no = CUSTOMER_UNIQUE_NO_BY_RRN[post_data.get("originalRRN")]
+    customer_unique_no = CUSTOMER_UNIQUE_NO_BY_RRN.get(
+        post_data.get("originalRRN"),
+        "12345",
+    )
 
     data_for_response = {
         "responseCode": "200",
