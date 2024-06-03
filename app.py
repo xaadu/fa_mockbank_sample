@@ -762,7 +762,7 @@ def statementStructureDataRequest():
     data = {
         "responseCode": "200",
         "responseDesc": "OK",
-        "status": db.get(
+        "data": db.get(
             post_data.get("customerUniqueNo"),
             {"staus": []},
         ).get("status"),
