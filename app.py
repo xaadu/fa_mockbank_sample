@@ -851,7 +851,7 @@ def enquiryRequest():
         "customerUniqueNo": post_data.get("customerUniqueNo"),
     }
     if post_data.get("enquiryType") == "1001":
-        data["CustomerConsentReceivedYN"] = "1"
+        data["CustomerConsentReceivedYN"] = None
     elif post_data.get("enquiryType") == "1002":
         data["data"] = [
             {"key": "active", "value": "1"},
