@@ -803,7 +803,7 @@ def statementStructureDataGetRequest():
     data_for_response = {
         "responseCode": "200",
         "responseDesc": "OK",
-        "statement": copy.deepcopy(db.get(customer_unique_no).get("statement")),
+        "data": copy.deepcopy(db.get(customer_unique_no).get("statement")),
         "RRN": post_data.get("RRN"),
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
@@ -811,13 +811,13 @@ def statementStructureDataGetRequest():
     }
     return_enc_keys = [
         "customerUniqueNo",
-        "statement.statementHeader.accountNo",
-        "statement.statementHeader.accountName",
-        "statement.statementHeader.accountAddress",
-        "statement.statementHeader.data.extraField1",
-        "statement.statementHeader.data.extraField3",
-        "statement.statementFooter.data.extraField2",
-        "statement.statementFooter.data.extraField4",
+        "data.statementHeader.accountNo",
+        "data.statementHeader.accountName",
+        "data.statementHeader.accountAddress",
+        "data.statementHeader.data.extraField1",
+        "data.statementHeader.data.extraField3",
+        "data.statementFooter.data.extraField2",
+        "data.statementFooter.data.extraField4",
     ]
     data_for_response = translate_cypher(
         data=data_for_response.copy(),
@@ -851,7 +851,10 @@ def enquiryRequest():
         "customerUniqueNo": post_data.get("customerUniqueNo"),
     }
     if post_data.get("enquiryType") == "1001":
-        data["CustomerConsentReceivedYN"] = None
+        # data["CustomerConsentReceivedYN"] = None
+        data["data"] = [
+            {"key": "customerConsent", "value": "0"},
+        ]
     elif post_data.get("enquiryType") == "1002":
         data["data"] = [
             {"key": "active", "value": "1"},
