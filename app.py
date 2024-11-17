@@ -747,7 +747,7 @@ def statementStructureDataRequest():
     post_data = request.get_json()
     # decerypt data
     field_list = [
-        "customerUniqueNo",
+        # "customerUniqueNo",
     ]
     key = os.environ.get("AES_KEY")
     aes = AESEncryption(key)
@@ -772,7 +772,7 @@ def statementStructureDataRequest():
         "customerUniqueNo": post_data.get("customerUniqueNo"),
     }
     return_enc_keys = [
-        "customerUniqueNo",
+        # "customerUniqueNo",
     ]
     for key in return_enc_keys:
         data[key] = aes.encrypt(data[key])
@@ -810,14 +810,14 @@ def statementStructureDataGetRequest():
         "customerUniqueNo": customer_unique_no,
     }
     return_enc_keys = [
-        "customerUniqueNo",
-        "data.statementHeader.accountNo",
-        "data.statementHeader.accountName",
-        "data.statementHeader.accountAddress",
-        "data.statementHeader.data.extraField1",
-        "data.statementHeader.data.extraField3",
-        "data.statementFooter.data.extraField2",
-        "data.statementFooter.data.extraField4",
+        # "customerUniqueNo",
+        # "data.statementHeader.accountNo",
+        # "data.statementHeader.accountName",
+        # "data.statementHeader.accountAddress",
+        # "data.statementHeader.data.extraField1",
+        # "data.statementHeader.data.extraField3",
+        # "data.statementFooter.data.extraField2",
+        # "data.statementFooter.data.extraField4",
     ]
     data_for_response = translate_cypher(
         data=data_for_response.copy(),
