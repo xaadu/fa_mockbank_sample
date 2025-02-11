@@ -2,6 +2,7 @@ import json
 import os
 from typing import Literal
 import copy
+import base64
 
 from flask import Flask, jsonify, request
 from dotenv import load_dotenv
@@ -11,6 +12,12 @@ from datetime import datetime
 
 load_dotenv()
 app = Flask(__name__)
+
+DOC_TYPE_MAPPING = {
+    "2001": "Signature Card",
+    "2002": "Image Photo Card",
+}
+
 
 db = {
     "12345": {
@@ -864,6 +871,54 @@ def enquiryRequest():
             {"key": "StatementData", "value": "1"},
         ]
 
+    return_enc_keys = [
+        # "customerUniqueNo",
+    ]
+    for key in return_enc_keys:
+        data[key] = aes.encrypt(data[key])
+    print("Returning data: ", data)
+    return jsonify(data)
+
+
+@app.route("/api/accountDocRetrieveRequest", methods=["POST"])
+def accountDocRetrieveRequest():
+    # Get post data
+    post_data = request.get_json()
+    # decerypt data
+    field_list = [
+        # "customerUniqueNo",
+    ]
+    key = os.environ.get("AES_KEY")
+    aes = AESEncryption(key)
+    for field in post_data.keys():
+        if field in field_list:
+            post_data[field] = aes.decrypt(post_data[field])
+    print(post_data)
+
+    doc_type = post_data.get("documentType")
+
+    doc_datas = []
+
+    files = os.listdir(doc_type)
+    for file in files:
+        with open(f"{doc_type}/{file}", "rb") as f:
+            doc_datas.append(
+                {
+                    "key": file.split(".")[0],
+                    "value": base64.b64encode(f.read()).decode("utf-8"),
+                    "refRemarks": file.split(".")[0],
+                }
+            )
+
+    data = {
+        "responseCode": "200",
+        "responseDesc": "OK",
+        "RRN": post_data.get("RRN"),
+        "originalRRN": post_data.get("originalRRN"),
+        "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
+        "customerUniqueNo": post_data.get("customerUniqueNo"),
+        "data": doc_datas,
+    }
     return_enc_keys = [
         # "customerUniqueNo",
     ]
