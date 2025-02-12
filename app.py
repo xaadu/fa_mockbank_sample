@@ -18,6 +18,42 @@ DOC_TYPE_MAPPING = {
     "2002": "Image Photo Card",
 }
 
+# if file.split(".")[1] in ["pdf"]:
+#     mimetype = "application/pdf"
+# elif file.split(".")[1] in ["jpg", "jpeg"]:
+#     mimetype = "image/jpeg"
+# elif file.split(".")[1] in ["png"]:
+#     mimetype = "image/png"
+# elif file.split(".")[1] in ["xml"]:
+#     mimetype = "application/xml"
+# elif file.split(".")[1] in ["json"]:
+#     mimetype = "application/json"
+# elif file.split(".")[1] in ["xlsx"]:
+#     mimetype = (
+#         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+#     )
+# elif file.split(".")[1] in ["docx"]:
+#     mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+# elif file.split(".")[1] in ["txt"]:
+#     mimetype = "text/plain"
+# elif file.split(".")[1] in ["csv"]:
+#     mimetype = "text/csv"
+# else:
+#     mimetype = "application/octet-stream"
+
+MIMETYPES = {
+    "pdf": "application/pdf",
+    "jpg": "image/jpeg",
+    "jpeg": "image/jpeg",
+    "png": "image/png",
+    "xml": "application/xml",
+    "json": "application/json",
+    "xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "txt": "text/plain",
+    "csv": "text/csv",
+}
+
 
 db = {
     "12345": {
@@ -902,11 +938,32 @@ def accountDocRetrieveRequest():
     files = os.listdir(doc_type)
     for file in files:
         with open(f"{doc_type}/{file}", "rb") as f:
+            content = f.read()
+            extension = file.split(".")[-1]
+            for key, value in MIMETYPES.items():
+                if extension == key:
+                    mimetype = value
+                    break
+            if not mimetype:
+                mimetype = "text/plain"
+
             doc_datas.append(
                 {
                     "key": file.split(".")[0],
-                    "value": base64.b64encode(f.read()).decode("utf-8"),
-                    "refRemarks": file.split(".")[0],
+                    "value": [
+                        {
+                            "key": "data",
+                            "value": base64.b64encode(content).decode("utf-8"),
+                        },
+                        {
+                            "key": "mimetype",
+                            "value": mimetype,
+                        },
+                        {
+                            "key": "refRemarks",
+                            "value": file.split(".")[0][-1] if mimetype == "image/jpeg" else "1",
+                        },
+                    ],
                 }
             )
 
@@ -917,7 +974,11 @@ def accountDocRetrieveRequest():
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
         "customerUniqueNo": post_data.get("customerUniqueNo"),
-        "data": doc_datas,
+        "data": (
+            doc_datas
+            if post_data.get("isRealtime") == "1"
+            else None
+        ),
     }
     return_enc_keys = [
         # "customerUniqueNo",
