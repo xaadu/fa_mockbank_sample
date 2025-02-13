@@ -14,8 +14,8 @@ load_dotenv()
 app = Flask(__name__)
 
 DOC_TYPE_MAPPING = {
-    "2001": "Signature Card",
-    "2002": "Image Photo Card",
+    "DOC010": "Signature Card",
+    "DOC020": "Image Photo Card",
 }
 
 # if file.split(".")[1] in ["pdf"]:
@@ -961,7 +961,11 @@ def accountDocRetrieveRequest():
                         },
                         {
                             "key": "refRemarks",
-                            "value": file.split(".")[0][-1] if mimetype == "image/jpeg" else "1",
+                            "value": (
+                                file.split(".")[0][-1]
+                                if mimetype == "image/jpeg"
+                                else "1"
+                            ),
                         },
                     ],
                 }
@@ -974,11 +978,7 @@ def accountDocRetrieveRequest():
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
         "customerUniqueNo": post_data.get("customerUniqueNo"),
-        "data": (
-            doc_datas
-            if post_data.get("isRealtime") == "1"
-            else None
-        ),
+        "data": (doc_datas if post_data.get("isRealtime") == "1" else None),
     }
     return_enc_keys = [
         # "customerUniqueNo",
