@@ -827,7 +827,7 @@ def statementStructureDataRequest():
 def statementStructureDataGetRequest():
     # Get post data
     post_data = request.get_json()
-    # decerypt data
+    # decrypt data
     field_list = [
         "customerUniqueNo",
     ]
@@ -843,15 +843,46 @@ def statementStructureDataGetRequest():
         "12345",
     )
 
+    # Get statement data based on statementDataType
+    statement_data_type = post_data.get("statementDataType", "S010")
+
+    # Initialize data
+    statement_data = None
+
+    if statement_data_type == "S010":
+        # Return JSON data as is (existing behavior)
+        statement_data = copy.deepcopy(db.get(customer_unique_no).get("statement"))
+    elif statement_data_type in ["S020", "S030"]:
+        # Construct PDF filename based on statement type and customer unique number
+        pdf_filename = f"{statement_data_type}_{customer_unique_no}.pdf"
+        pdf_path = f"statements/{pdf_filename}"  # Update with actual directory path
+
+        with open(pdf_path, "rb") as pdf_file:
+            pdf_content = pdf_file.read()
+            # Just put the base64 encoded content directly in the data field
+            statement_data = base64.b64encode(pdf_content).decode("utf-8")
+    else:
+        # Unsupported statement data type
+        return jsonify(
+            {
+                "responseCode": "400",
+                "responseDesc": f"Unsupported statementDataType: {statement_data_type}",
+                "RRN": post_data.get("RRN"),
+                "originalRRN": post_data.get("originalRRN"),
+                "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
+            }
+        )
+
     data_for_response = {
         "responseCode": "200",
         "responseDesc": "OK",
-        "data": copy.deepcopy(db.get(customer_unique_no).get("statement")),
+        "data": statement_data,
         "RRN": post_data.get("RRN"),
         "originalRRN": post_data.get("originalRRN"),
         "creationDateTime": datetime.now().strftime("%d-%b-%Y %H:%M:%S"),
         "customerUniqueNo": customer_unique_no,
     }
+
     return_enc_keys = [
         # "customerUniqueNo",
         # "data.statementHeader.accountNo",
@@ -862,6 +893,7 @@ def statementStructureDataGetRequest():
         # "data.statementFooter.data.extraField2",
         # "data.statementFooter.data.extraField4",
     ]
+
     data_for_response = translate_cypher(
         data=data_for_response.copy(),
         request=None,
@@ -869,6 +901,7 @@ def statementStructureDataGetRequest():
         aes_key=key,
         mode="ENCRYPT",
     )
+
     # print("Returning data: ", json.dumps(data_for_response, indent=4))
     return jsonify(data_for_response)
 
