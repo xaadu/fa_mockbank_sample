@@ -1163,7 +1163,7 @@ def statementStructureDataRequest():
         f.write(json.dumps(CUSTOMER_UNIQUE_NO_BY_RRN))
 
     data = {
-        "responseCode": "200",
+        "responseCode": "100",
         "responseDesc": "OK",
         "data": db.get(
             post_data.get("customerUniqueNo"),
