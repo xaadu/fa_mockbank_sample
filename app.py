@@ -1234,7 +1234,7 @@ def statementStructureDataGetRequest():
         )
 
     data_for_response = {
-        "responseCode": "200",
+        "responseCode": "100",
         "responseDesc": "OK",
         "data": statement_data,
         "RRN": post_data.get("RRN"),
